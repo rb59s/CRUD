@@ -20,17 +20,25 @@ include 'read.php'; // Récupérer les tâches de la base de données
         <button type="submit" class="btn btn-primary">Ajouter</button>
     </form>
 
-    <!-- Affichage des tâches -->
+
     <ul id="todo-list" class="list-group mt-3">
-        <?php foreach ($tasks as $task): ?>
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <span><?php echo htmlspecialchars($task['contenu']); ?></span>
-                <form action="delete.php" method="POST" style="display:inline;">
-                    <input type="hidden" name="id" value="<?php echo $task['id']; ?>">
-                    <button type="submit" class="btn btn-danger btn-sm">✖ Supprimer</button>
-                </form>
-            </li>
-        <?php endforeach; ?>
-    </ul>
+    <?php foreach ($tasks as $task): ?>
+        <li class="list-group-item d-flex justify-content-between align-items-center">
+            <span><?php echo htmlspecialchars($task['contenu']); ?></span>
+            
+         
+            <form action="delete.php" method="POST" style="display:inline;">
+                <input type="hidden" name="id" value="<?php echo $task['id']; ?>">
+                <button type="submit" class="btn btn-danger btn-sm">✖ Supprimer</button>
+            </form>
+
+            <form action="update.php" method="POST" style="display:inline;">
+                <input type="hidden" name="id1" value="<?php echo $task['id']; ?>"> 
+                <button type="submit" class="btn btn-success btn-sm">Valider</button>
+            </form>
+        </li>
+    <?php endforeach; ?>
+</ul>
+
 </body>
 </html>
